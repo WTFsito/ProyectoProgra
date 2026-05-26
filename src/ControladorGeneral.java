@@ -2,7 +2,9 @@ import java.util.Scanner;
 
 public class ControladorGeneral {
 
+
     public void iniciarJuego() {
+
 
         Scanner scanner = new Scanner(System.in);
 
