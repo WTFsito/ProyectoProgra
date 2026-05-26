@@ -2,6 +2,9 @@ public class ControladorGeneral {
 
     public static void main(String[] args) {
 
+        Title title= new Title();
+        title.Titleprint();
+
         ComprobarCasillas comprobarCasillas= new ComprobarCasillas();
         IngresoDatos ingresoDatos= new IngresoDatos();
         boolean victoria=false;
