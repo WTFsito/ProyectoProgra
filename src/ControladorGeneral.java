@@ -1,44 +1,115 @@
+import java.util.Scanner;
+
 public class ControladorGeneral {
 
-    public static void main(String[] args) {
+    public void iniciarJuego() {
 
-        Title title= new Title();
+        Scanner scanner = new Scanner(System.in);
+
+        Title title = new Title();
         title.Titleprint();
 
-        ComprobarCasillas comprobarCasillas= new ComprobarCasillas();
-        IngresoDatos ingresoDatos= new IngresoDatos();
-        boolean victoria=false;
-        int cont=0;
-        char fila=' ', columna=' ';
-        char[][] matMostrar= new char[4][4]; 
+        ComprobarCasillas comprobarCasillas = new ComprobarCasillas();
+        IngresoDatos ingresoDatos = new IngresoDatos();
         LlenarMatriz llenarMatriz = new LlenarMatriz();
-        llenarMatriz.inicializarMatriz(matMostrar);
-        
-        
+
+        int opcion;
 
         do {
 
-            cont++;
-            //cont para elegir X o O, cont=0 imprime una X cont=1 una O, osea siempre se inicia con X y cont mod 2, si es 0 una x y si es 1 una O
-            fila=ingresoDatos.ingresarFila(cont);
-            columna=ingresoDatos.ingresarColumna(cont);
+            System.out.println("\n1. Iniciar partida");
+            System.out.println("2. Terminar juego");
+            System.out.print("Seleccione una opcion: ");
 
-            victoria=comprobarCasillas.validarVictoria(fila , columna, matMostrar);
+            opcion = scanner.nextInt();
 
+            switch(opcion) {
 
+                case 1:
 
+                    boolean victoria = false;
+                    int cont = -1;
 
+                    char[][] matMostrar = new char[4][4];
 
+                    llenarMatriz.inicializarMatriz(matMostrar);
+                    llenarMatriz.fijarCasillas(matMostrar);
 
-            //El juego termina cuando alguien gane o pasen los 9 turnos y el tablero se llene
-        } while (!victoria && cont < 9);
+                    llenarMatriz.imprimirMatriz(matMostrar);
 
+                    do {
 
+                        cont++;
 
+                        if(cont % 2 == 0) {
 
+                            System.out.println("Turno N°: " + (cont + 1) + ", juega \"X\"");
+
+                        } else {
+
+                            System.out.println("Turno N°: " + (cont + 1) + ", juega \"O\"");
+
+                        }
+
+                        int[] datos = ingresoDatos.ingresarDatos(matMostrar);
+
+                        int filaPosicion = datos[0];
+                        int columnaPosicion = datos[1];
+
+                        if(cont % 2 == 0) {
+
+                            matMostrar[filaPosicion][columnaPosicion] = 'X';
+
+                        } else {
+
+                            matMostrar[filaPosicion][columnaPosicion] = 'O';
+
+                        }
+
+                        llenarMatriz.imprimirMatriz(matMostrar);
+
+                        victoria = comprobarCasillas.validarVictoria(
+                                filaPosicion,
+                                columnaPosicion,
+                                matMostrar
+                        );
+
+                        if(victoria) {
+
+                            if(cont % 2 == 0) {
+
+                                System.out.println("¡El jugador X ha ganado!");
+
+                            } else {
+
+                                System.out.println("¡El jugador O ha ganado!");
+
+                            }
+
+                        }
+
+                        if(cont == 8 && !victoria) {
+
+                            System.out.println("¡Empate!");
+
+                        }
+
+                    } while(!victoria && cont < 8);
+
+                    break;
+
+                case 2:
+
+                    System.out.println("Juego finalizado.");
+                    System.out.println("Gracias por jugar ^-^");
+                    break;
+
+                default:
+
+                    System.out.println("Opcion invalida.");
+            }
+
+        } while(opcion != 2);
 
     }
-
-    
-
 }

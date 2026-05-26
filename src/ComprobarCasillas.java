@@ -1,6 +1,6 @@
 public class ComprobarCasillas {
 
-    public boolean validarVictoria( char fila, char columna, char[][] matMostrar) {
+    public boolean validarVictoria( int fila, int columna, char[][] matMostrar) {
         if (matMostrar[fila][1]==matMostrar[fila][2] && matMostrar[fila][1]==matMostrar[fila][3]) {
             return true;
         }

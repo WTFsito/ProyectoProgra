@@ -1,18 +1,18 @@
-## Getting Started
+🎮 Tres en Raya en Java
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Un clásico Tres en Raya (Tic Tac Toe) desarrollado en Java usando:
 
-## Folder Structure
+matrices char[][]
+validación de jugadas
+detección de victoria
+sistema de turnos
+menú interactivo
+📌 Características
 
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+✅ Juego para 2 jugadores
+✅ Tablero dinámico con matriz 4x4
+✅ Validación de casillas ocupadas
+✅ Validación de filas, columnas y diagonales
+✅ Sistema de empate
+✅ Reinicio de partida desde menú
+✅ Alternancia automática entre X y O
