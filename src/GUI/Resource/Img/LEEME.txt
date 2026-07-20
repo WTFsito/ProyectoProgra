@@ -1,0 +1,1 @@
+Coloca aqui tus imagenes: splash.png y menu_bg.png
