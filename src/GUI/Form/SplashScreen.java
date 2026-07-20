@@ -18,7 +18,7 @@ public class SplashScreen extends JWindow {
         setLayout(new BorderLayout());
 
        
-       URL rutaImagen = getClass().getResource("/GUI/Resource/Img/carga1.png");
+       URL rutaImagen = getClass().getResource("/GUI/Resource/Img/carga.png");
         JLabel lblImagen;
         if (rutaImagen != null) {
             lblImagen = new JLabel(new ImageIcon(rutaImagen));
@@ -48,7 +48,7 @@ public class SplashScreen extends JWindow {
                 final int valor = progreso;
                 SwingUtilities.invokeLater(() -> barraCarga.setValue(valor));
                 try {
-                    Thread.sleep(5);
+                    Thread.sleep(15);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

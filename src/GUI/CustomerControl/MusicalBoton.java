@@ -1,14 +1,14 @@
 package GUI.CustomerControl;
 
-import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
+import javax.swing.JButton;
 
 
-public class PatButton extends JButton {
+public class MusicalBoton extends JButton {
 
-    public PatButton(String texto) {
+    public MusicalBoton(String texto) {
         super(texto);
         setFont(new Font("Segoe UI", Font.BOLD, 18));
         setForeground(Color.WHITE);

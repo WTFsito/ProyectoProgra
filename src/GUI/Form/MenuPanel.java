@@ -1,6 +1,6 @@
 package GUI.Form;
 
-import GUI.CustomerControl.PatButton;
+import GUI.CustomerControl.MusicalBoton;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.net.URL;
@@ -23,13 +23,13 @@ public class MenuPanel extends JPanel {
             imagenFondo = new ImageIcon(rutaFondo).getImage();
         }
 
-        PatButton btnJugar = new PatButton("Jugar");
+        MusicalBoton btnJugar = new MusicalBoton("Jugar");
         btnJugar.setBounds(280, 260, 160, 45);
         btnJugar.addActionListener(e -> {
             mainform.cambiarDePanel(new TableroPanel());
         });
 
-        PatButton btnSalir = new PatButton("Salir");
+        MusicalBoton btnSalir = new MusicalBoton("Salir");
         btnSalir.setBounds(280, 320, 160, 45);
         btnSalir.addActionListener(e -> System.exit(0));
 

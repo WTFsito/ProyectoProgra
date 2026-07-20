@@ -1,5 +1,7 @@
 package GUI.Form;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -10,8 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import java.awt.Font;
-import java.awt.Color;
 
 public class TableroPanel extends JPanel {
     
@@ -37,19 +37,28 @@ public class TableroPanel extends JPanel {
 
     public TableroPanel() {
 
-        // 1. Label para el número de turno
-    lblTurnoNumero = new JLabel("Turno: 1");
-    lblTurnoNumero.setBounds(228, 20, 200, 30);
-    lblTurnoNumero.setFont(new Font("Arial", Font.BOLD, 18));
-    lblTurnoNumero.setForeground(Color.WHITE); // Color de letra para resaltar en el fondo oscuro
-    add(lblTurnoNumero);
+        JPanel panelInfoTurno = new JPanel();
+        panelInfoTurno.setLayout(null); // Para posicionar los textos internamente
+        panelInfoTurno.setBackground(Color.WHITE); // Fondo blanco (o puedes usar un gris suave)
+        panelInfoTurno.setBounds(220, 15, 275, 65); // Posición y tamaño del cuadro blanco
+
+           // 1. Label para el número de turno
+        lblTurnoNumero = new JLabel("Turno: 1");
+        lblTurnoNumero.setBounds(228, 20, 200, 30);
+        lblTurnoNumero.setFont(new Font("Arial", Font.BOLD, 18));
+        lblTurnoNumero.setForeground(Color.BLACK); // Color de letra para resaltar en el fondo oscuro
+        add(lblTurnoNumero);
         
-    // 2. Label para indicar el jugador activo
-    lblJugadorActual = new JLabel("Turno de: Jugador 1 (X)");
-    lblJugadorActual.setBounds(228, 50, 300, 30);
-    lblJugadorActual.setFont(new Font("Arial", Font.BOLD, 16));
-    lblJugadorActual.setForeground(Color.CYAN); // Un color neón para hacer juego
-    add(lblJugadorActual);
+        // 2. Label para indicar el jugador activo
+        lblJugadorActual = new JLabel("Turno de: Jugador 1 (X)");
+        lblJugadorActual.setBounds(228, 50, 300, 30);
+        lblJugadorActual.setFont(new Font("Arial", Font.BOLD, 16));
+        lblJugadorActual.setForeground(Color.CYAN); // Un color neón para hacer juego
+        add(lblJugadorActual);
+
+        add(panelInfoTurno);
+
+    
 
     
         // Usamos diseño libre (null) para acomodar todo exactamente con coordenadas
