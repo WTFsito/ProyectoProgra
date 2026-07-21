@@ -22,10 +22,10 @@ public class TableroPanel extends JPanel {
     private JLabel lblTurnoNumero;
     private JLabel lblJugadorActual;
     private void actualizarIndicadoresTurno() {
-        // Actualiza el número de turno
+        
         lblTurnoNumero.setText("Turno: " + contadorTurno);
     
-        // Determina quién juega según la regla del residuo
+        
         if (contadorTurno % 2 != 0) {
             lblJugadorActual.setText("Turno de: Jugador 1 (X)");
             lblJugadorActual.setForeground(Color.CYAN);
@@ -38,18 +38,18 @@ public class TableroPanel extends JPanel {
     public TableroPanel() {
 
         JPanel panelInfoTurno = new JPanel();
-        panelInfoTurno.setLayout(null); // Para posicionar los textos internamente
-        panelInfoTurno.setBackground(Color.WHITE); // Fondo blanco (o puedes usar un gris suave)
-        panelInfoTurno.setBounds(220, 15, 275, 65); // Posición y tamaño del cuadro blanco
+        panelInfoTurno.setLayout(null); 
+        panelInfoTurno.setBackground(Color.WHITE); 
+        panelInfoTurno.setBounds(220, 15, 275, 65);
 
-           // 1. Label para el número de turno
+        
         lblTurnoNumero = new JLabel("Turno: 1");
         lblTurnoNumero.setBounds(228, 20, 200, 30);
         lblTurnoNumero.setFont(new Font("Arial", Font.BOLD, 18));
-        lblTurnoNumero.setForeground(Color.BLACK); // Color de letra para resaltar en el fondo oscuro
+        lblTurnoNumero.setForeground(Color.BLACK); 
         add(lblTurnoNumero);
         
-        // 2. Label para indicar el jugador activo
+        
         lblJugadorActual = new JLabel("Turno de: Jugador 1 (X)");
         lblJugadorActual.setBounds(228, 50, 300, 30);
         lblJugadorActual.setFont(new Font("Arial", Font.BOLD, 16));
@@ -61,17 +61,17 @@ public class TableroPanel extends JPanel {
     
 
     
-        // Usamos diseño libre (null) para acomodar todo exactamente con coordenadas
+    
         setLayout(null); 
         
-        // 1. Cargar el fondo del tablero
+        
         URL rutaFondo = getClass().getResource("/GUI/Resource/Img/fondo_tablero.png");
         if (rutaFondo != null) {
             imagenFondo = new ImageIcon(rutaFondo).getImage();
         }
         
-        // 2. Inicializar y posicionar las 9 casillas dinámicas
-        int tamañoCasilla = 60; // Ancho y alto de cada casilla en píxeles
+        
+        int tamañoCasilla = 60;
 
         // --- FILA 1 ---
         CasillaLabel c1 = new CasillaLabel();
@@ -116,7 +116,6 @@ public class TableroPanel extends JPanel {
         cajaDeTexto1.setBounds(255, 375, 200, 20);
         add(cajaDeTexto1);
 
-        // Mapeo a la matriz para simplificar accesos por fila y columna
         casillas[0][0] = c1; casillas[0][1] = c2; casillas[0][2] = c3;
         casillas[1][0] = c4; casillas[1][1] = c5; casillas[1][2] = c6;
         casillas[2][0] = c7; casillas[2][1] = c8; casillas[2][2] = c9;
@@ -138,32 +137,28 @@ public class TableroPanel extends JPanel {
             return;
         }
 
-        // Obtener las coordenadas [fila, columna] según el código ingresado
         int[] pos = obtenerCoordenadasPorCodigo(codigo);
 
         if (pos == null) {
             JOptionPane.showMessageDialog(this, 
                 "Código de barras no reconocido. Intente nuevamente.", 
                 "Código Inválido", JOptionPane.ERROR_MESSAGE);
-            return; // No se avanza turno
+            return;
         }
 
         int fila = pos[0];
         int col = pos[1];
 
-        // Verificar si la casilla seleccionada ya está ocupada
         if (casillas[fila][col].getEstadoActual() != CasillaLabel.VACIO) {
             JOptionPane.showMessageDialog(this, 
                 "La casilla ya está ocupada. Elija otra casilla.", 
                 "Advertencia", JOptionPane.WARNING_MESSAGE);
-            // El turno NO avanza, se mantiene en el mismo número de turno
             return;
         }
 
         // Determinar el símbolo según la regla de turnos (Impar = X, Par = O)
         int simboloJugador = (contadorTurno % 2 != 0) ? CasillaLabel.X : CasillaLabel.O;
 
-        // Marcar la casilla con el símbolo actual
         casillas[fila][col].setEstado(simboloJugador);
 
         // --- EVALUAR CONDICIONES DE FIN DE JUEGO ---
@@ -178,14 +173,11 @@ public class TableroPanel extends JPanel {
             return;
         }
 
-        // ¡Jugada válida realizada! Avanzamos al siguiente turno
         contadorTurno++;
         actualizarIndicadoresTurno();
     }
 
-    // Mapea los códigos de barras físicos a sus coordenadas [fila, columna]
     private int[] obtenerCoordenadasPorCodigo(String codigo) {
-        // Reemplaza estos códigos de ejemplo por los números reales de tus códigos de barras
         switch (codigo) {
             case "1120252026111": return new int[]{0, 0}; // C1 (Fila 0, Col 0)
             case "1220252026125": return new int[]{0, 1}; // C2 (Fila 0, Col 1)
@@ -199,11 +191,10 @@ public class TableroPanel extends JPanel {
             case "3220252026321": return new int[]{2, 1}; // C8 (Fila 2, Col 1)
             case "3320252026335": return new int[]{2, 2}; // C9 (Fila 2, Col 2)
             
-            default: return null; // Código desconocido
+            default: return null;
         }
     }
     
-    // Dibujar el fondo simulado
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -212,15 +203,12 @@ public class TableroPanel extends JPanel {
         }
     }
     
-    // Método público que usarás más adelante para cambiar el estado de una casilla
-    // Por ejemplo: tableroPanel.marcarCasilla(0, 2, CasillaLabel.X);
     public void marcarCasilla(int fila, int col, int jugador) {
         if (fila >= 0 && fila < 3 && col >= 0 && col < 3) {
             casillas[fila][col].setEstado(jugador);
         }
     }
 
-    // Revisa si el jugador con el símbolo dado (X o O) completó 3 en línea
     private boolean verificarGanador(int simbolo) {
         // 1. Revisar Filas
         for (int i = 0; i < 3; i++) {
@@ -257,12 +245,11 @@ public class TableroPanel extends JPanel {
         return false;
     }
 
-    // Revisa si todas las casillas están ocupadas
     private boolean verificarEmpate() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (casillas[i][i].getEstadoActual() == CasillaLabel.VACIO) {
-                    return false; // Todavía hay al menos una casilla libre
+                    return false;
                 }
             }
         }
