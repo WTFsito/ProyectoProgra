@@ -10,6 +10,8 @@ Un clásico Tres en Raya (Tic Tac Toe)- version mejorada
 
 ✅Uso de un lector de codigo de barras para cada turno.
 
+✅ Uso de un tablero similar al del 3 en raya, con la diferencia que en cada lugar habra un codigo de barras con un valor constante - unico.
+
 ✅ Validación de casillas ocupadas
 
 ✅ Validación de filas, columnas y diagonales
