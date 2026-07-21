@@ -20,7 +20,7 @@ Un clásico Tres en Raya (Tic Tac Toe)- version mejorada
 
 ✅ Alternancia automática entre X y O
 
-Dentro de este juego se uso la normativa traditional de Java, es decir que las clases sean declaradas en mayuscula,implementacion de encapsulamiento asi como de unos pequeños framework
+Dentro de este juego se uso la normativa traditional de Java, es decir que las clases sean declaradas en mayuscula,implementacion de encapsulamiento(con sus normativas) asi como de unos pequeños framework
 
 
 
